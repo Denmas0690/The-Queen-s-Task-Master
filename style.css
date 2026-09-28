@@ -1,0 +1,332 @@
+/* ========================================
+RESET
+======================================== */
+
+* {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
+
+/* ========================================
+BODY
+======================================== */
+
+body {
+font-family: Arial, sans-serif;
+background: #f4f4f4;
+color: #333;
+}
+
+/* ========================================
+NAVIGATION
+======================================== */
+
+nav {
+height: 70px;
+
+background: #dd1219;
+color: white;
+
+display: flex;
+align-items: center;
+
+padding: 0 30px;
+}
+
+/* Logo */
+
+.logo {
+font-size: 22px;
+font-weight: bold;
+
+margin-right: 50px;
+}
+
+/* Navigation links */
+
+.nav-links {
+display: flex;
+gap: 30px;
+}
+
+.nav-links a {
+color: white;
+text-decoration: none;
+
+font-size: 15px;
+}
+
+.nav-links a:hover {
+text-decoration: underline;
+}
+
+/* Account */
+
+.account {
+margin-left: auto;
+
+display: flex;
+align-items: center;
+
+gap: 8px;
+}
+
+.account span {
+font-size: 18px;
+}
+
+.account button {
+background: none;
+border: none;
+
+color: white;
+
+font-size: 15px;
+
+cursor: pointer;
+}
+
+.account button:hover {
+opacity: 0.75;
+}
+
+/* ========================================
+MAIN
+======================================== */
+
+main {
+width: 90%;
+max-width: 1000px;
+
+margin: 30px auto;
+}
+
+/* ========================================
+GENERAL SECTIONS
+======================================== */
+
+section {
+background: white;
+
+padding: 25px;
+
+margin-bottom: 20px;
+
+border-radius: 10px;
+}
+
+/* ========================================
+TASK FORM
+======================================== */
+
+.task-form {
+display: flex;
+
+flex-direction: column;
+
+gap: 12px;
+}
+
+.task-form h2 {
+margin-bottom: 5px;
+}
+
+input,
+select,
+button {
+padding: 12px;
+
+font-size: 16px;
+
+border-radius: 6px;
+
+border: 1px solid #ccc;
+}
+
+.task-form button {
+background: #dd1219;
+
+color: white;
+
+border: none;
+
+cursor: pointer;
+}
+
+.task-form button:hover {
+opacity: 0.85;
+}
+
+/* ========================================
+SEARCH
+======================================== */
+
+.search-section input {
+width: 100%;
+}
+
+/* ========================================
+SUMMARY
+======================================== */
+
+.summary {
+display: flex;
+
+justify-content: space-around;
+
+text-align: center;
+}
+
+.summary div {
+min-width: 100px;
+}
+
+.summary h3 {
+font-size: 28px;
+
+margin-bottom: 5px;
+}
+
+/* ========================================
+TASK LIST
+======================================== */
+
+.task-list h2 {
+margin-bottom: 15px;
+}
+
+.task-item {
+border: 1px solid #ddd;
+
+padding: 18px;
+
+margin-top: 12px;
+
+border-radius: 8px;
+}
+
+.task-item.completed {
+opacity: 0.6;
+}
+
+.task-item.completed .task-name {
+text-decoration: line-through;
+}
+
+.task-name {
+font-size: 20px;
+
+font-weight: bold;
+
+margin-bottom: 10px;
+}
+
+.task-info {
+margin-bottom: 8px;
+
+color: #666;
+}
+
+/* ========================================
+TASK BUTTONS
+======================================== */
+
+.task-actions {
+display: flex;
+
+gap: 10px;
+
+margin-top: 15px;
+}
+
+.complete-button {
+background: #2e7d32;
+
+color: white;
+
+border: none;
+
+cursor: pointer;
+}
+
+.delete-button {
+background: #dd1219;
+
+color: white;
+
+border: none;
+
+cursor: pointer;
+}
+
+.complete-button:hover,
+.delete-button:hover {
+opacity: 0.85;
+}
+
+/* ========================================
+PRIORITY
+======================================== */
+
+.priority-high {
+color: #dd1219;
+
+font-weight: bold;
+}
+
+.priority-medium {
+color: #ef6c00;
+
+font-weight: bold;
+}
+
+.priority-low {
+color: #2e7d32;
+
+font-weight: bold;
+}
+
+/* ========================================
+MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+
+nav {
+height: auto;
+
+padding: 20px;
+
+flex-wrap: wrap;
+
+gap: 15px;
+}
+
+.logo {
+margin-right: 20px;
+}
+
+.nav-links {
+order: 3;
+
+width: 100%;
+
+justify-content: center;
+}
+
+.account {
+margin-left: auto;
+}
+
+.summary {
+flex-direction: column;
+
+gap: 15px;
+}
+
+.task-actions {
+flex-direction: column;
+}
+
+}

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Task Master</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">
+Task Master
+</div>
+
+<div class="nav-links">
+
+<a href="#">Dashboard</a>
+<a href="#">Tasks</a>
+<a href="#">Reports</a>
+
+</div>
+
+<div class="account">
+
+<span>👤</span>
+
+<button id="accountButton">
+    Denny ▾
+</button>
+
+</div>
+
+</nav>
+
+<main>
+
+<!-- Task Form -->
+
+<section class="task-form">
+
+<h2>Add New Task</h2>
+
+<input
+type="text"
+id="taskInput"
+placeholder="Enter task..."
+>
+
+<input
+type="text"
+id="assignedInput"
+placeholder="Assigned to..."
+>
+
+<select id="priorityInput">
+
+<option value="Low">Low</option>
+<option value="Medium" selected>Medium</option>
+<option value="High">High</option>
+
+</select>
+
+<input
+type="date"
+id="dueDateInput"
+>
+
+<button id="addTaskButton">
+Add Task
+</button>
+
+</section>
+
+<!-- Search -->
+
+<section class="search-section">
+
+<input
+type="text"
+id="searchInput"
+placeholder="Search tasks..."
+>
+
+</section>
+
+<!-- Task Summary -->
+
+<section class="summary">
+
+<div>
+<h3 id="totalTasks">0</h3>
+<p>Total</p>
+</div>
+
+<div>
+<h3 id="pendingTasks">0</h3>
+<p>Pending</p>
+</div>
+
+<div>
+<h3 id="completedTasks">0</h3>
+<p>Completed</p>
+</div>
+
+</section>
+
+<!-- Task List -->
+
+<section class="task-list">
+
+<h2>Tasks</h2>
+
+<div id="taskContainer"></div>
+
+</section>
+
+</main>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
