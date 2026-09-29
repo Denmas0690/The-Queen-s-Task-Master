@@ -1,12 +1,10 @@
 console.log("Task Master is connected!");
 
-
 // ========================================
 // TASK DATA
 // ========================================
 
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-
 
 // ========================================
 // HTML ELEMENTS
@@ -34,7 +32,6 @@ const pendingTasks = document.querySelector("#pendingTasks");
 
 const completedTasks = document.querySelector("#completedTasks");
 
-
 // ========================================
 // SAVE TASKS
 // ========================================
@@ -45,7 +42,6 @@ localStorage.setItem("tasks", JSON.stringify(tasks));
 
 }
 
-
 // ========================================
 // DISPLAY TASKS
 // ========================================
@@ -54,20 +50,17 @@ function displayTasks(taskArray) {
 
 taskContainer.innerHTML = "";
 
-
 taskArray.forEach(function(task) {
 
 const taskElement = document.createElement("div");
 
 taskElement.classList.add("task-item");
 
-
 if (task.completed) {
 
 taskElement.classList.add("completed");
 
 }
-
 
 taskElement.innerHTML = `
 
@@ -79,11 +72,9 @@ taskElement.innerHTML = `
 ${task.name}
 </div>
 
-
 <div class="task-info">
 Assigned to: ${task.assignedTo}
 </div>
-
 
 <div class="task-info">
 Priority:
@@ -94,18 +85,15 @@ ${task.priority}
 
 </div>
 
-
 <div class="task-info">
 Due date:
 ${task.dueDate || "No due date"}
 </div>
 
-
 <div class="task-info">
 Status:
 ${task.completed ? "Completed" : "Pending"}
 </div>
-
 
 <div class="task-actions">
 
@@ -115,7 +103,6 @@ onclick="toggleTask(${task.id})"
 >
 ${task.completed ? "Mark Pending" : "Complete"}
 </button>
-
 
 <button
 class="delete-button"
@@ -127,7 +114,6 @@ Delete
 </div>
 
 </div>
-
 
 <div class="task-image">
 
@@ -143,16 +129,13 @@ task.image
 
 `;
 
-
 taskContainer.appendChild(taskElement);
 
 });
 
-
 updateSummary();
 
 }
-
 
 // ========================================
 // ADD TASK
@@ -170,7 +153,6 @@ const dueDate = dueDateInput.value;
 
 const imageFile = imageInput.files[0];
 
-
 // Check task name
 
 if (taskName === "") {
@@ -180,7 +162,6 @@ alert("Please enter a task.");
 return;
 
 }
-
 
 // Check if an image was selected
 
@@ -199,7 +180,6 @@ createTask("");
 }
 
 }
-
 
 // ========================================
 // COMPRESS IMAGE
@@ -240,7 +220,6 @@ width = maxWidth;
 
 }
 
-
 // Resize height if necessary
 
 if (height > maxHeight) {
@@ -251,14 +230,11 @@ height = maxHeight;
 
 }
 
-
 canvas.width = width;
 
 canvas.height = height;
 
-
 const context = canvas.getContext("2d");
-
 
 context.drawImage(
 image,
@@ -268,7 +244,6 @@ width,
 height
 );
 
-
 // Compress image
 
 const compressedImage = canvas.toDataURL(
@@ -276,21 +251,17 @@ const compressedImage = canvas.toDataURL(
 0.7
 );
 
-
 callback(compressedImage);
 
 };
-
 
 image.src = event.target.result;
 
 };
 
-
 reader.readAsDataURL(file);
 
 }
-
 
 // ========================================
 // CREATE TASK
@@ -316,9 +287,7 @@ completed: false
 
 };
 
-
 tasks.push(newTask);
-
 
 saveTasks();
 
@@ -339,7 +308,6 @@ imageInput.value = "";
 
 }
 
-
 // ========================================
 // COMPLETE / PENDING
 // ========================================
@@ -356,13 +324,11 @@ task.completed = !task.completed;
 
 });
 
-
 saveTasks();
 
 displayTasks(tasks);
 
 }
-
 
 // ========================================
 // DELETE TASK
@@ -376,13 +342,11 @@ return task.id !== taskId;
 
 });
 
-
 saveTasks();
 
 displayTasks(tasks);
 
 }
-
 
 // ========================================
 // SEARCH TASKS
@@ -402,11 +366,9 @@ task.assignedTo.toLowerCase().includes(searchText)
 
 });
 
-
 displayTasks(filteredTasks);
 
 }
-
 
 // ========================================
 // TASK SUMMARY
@@ -416,13 +378,11 @@ function updateSummary() {
 
 totalTasks.innerHTML = tasks.length;
 
-
 const completed = tasks.filter(function(task) {
 
 return task.completed === true;
 
 });
-
 
 const pending = tasks.filter(function(task) {
 
@@ -430,13 +390,11 @@ return task.completed === false;
 
 });
 
-
 completedTasks.innerHTML = completed.length;
 
 pendingTasks.innerHTML = pending.length;
 
 }
-
 
 // ========================================
 // EVENTS
@@ -445,7 +403,6 @@ pendingTasks.innerHTML = pending.length;
 addTaskButton.addEventListener("click", addTask);
 
 searchInput.addEventListener("input", searchTasks);
-
 
 // ========================================
 // INITIAL DISPLAY
