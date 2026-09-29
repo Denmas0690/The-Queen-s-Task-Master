@@ -24,8 +24,7 @@ NAVIGATION
 
 nav {
 height: 70px;
-
-background: #dd1219;
+background: #800000;
 color: white;
 
 display: flex;
@@ -34,16 +33,11 @@ align-items: center;
 padding: 0 30px;
 }
 
-/* Logo */
-
 .logo {
 font-size: 22px;
 font-weight: bold;
-
 margin-right: 50px;
 }
-
-/* Navigation links */
 
 .nav-links {
 display: flex;
@@ -53,15 +47,12 @@ gap: 30px;
 .nav-links a {
 color: white;
 text-decoration: none;
-
 font-size: 15px;
 }
 
 .nav-links a:hover {
 text-decoration: underline;
 }
-
-/* Account */
 
 .account {
 margin-left: auto;
@@ -103,7 +94,7 @@ margin: 30px auto;
 }
 
 /* ========================================
-GENERAL SECTIONS
+SECTIONS
 ======================================== */
 
 section {
@@ -122,9 +113,7 @@ TASK FORM
 
 .task-form {
 display: flex;
-
 flex-direction: column;
-
 gap: 12px;
 }
 
@@ -145,7 +134,7 @@ border: 1px solid #ccc;
 }
 
 .task-form button {
-background: #dd1219;
+background: #800000;
 
 color: white;
 
@@ -214,6 +203,28 @@ opacity: 0.6;
 text-decoration: line-through;
 }
 
+/* ========================================
+TASK CONTENT
+======================================== */
+
+.task-content {
+display: flex;
+
+justify-content: space-between;
+
+align-items: flex-start;
+
+gap: 25px;
+}
+
+/* ========================================
+TASK DETAILS
+======================================== */
+
+.task-details {
+flex: 1;
+}
+
 .task-name {
 font-size: 20px;
 
@@ -226,6 +237,46 @@ margin-bottom: 10px;
 margin-bottom: 8px;
 
 color: #666;
+}
+
+/* ========================================
+TASK IMAGE
+======================================== */
+
+.task-image {
+width: 300px;
+height: 220px;
+
+flex-shrink: 0;
+
+border: 1px solid #ddd;
+
+border-radius: 8px;
+
+overflow: hidden;
+
+display: flex;
+
+align-items: center;
+
+justify-content: center;
+
+background: #f5f5f5;
+}
+
+.task-image img {
+display: block;
+
+width: 100%;
+height: 100%;
+
+object-fit: cover;
+}
+
+.no-image {
+color: #999;
+
+font-size: 14px;
 }
 
 /* ========================================
@@ -251,7 +302,7 @@ cursor: pointer;
 }
 
 .delete-button {
-background: #dd1219;
+background: #c62828;
 
 color: white;
 
@@ -270,7 +321,7 @@ PRIORITY
 ======================================== */
 
 .priority-high {
-color: #dd1219;
+color: #c62828;
 
 font-weight: bold;
 }
@@ -291,7 +342,7 @@ font-weight: bold;
 MOBILE
 ======================================== */
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
 
 nav {
 height: auto;
@@ -323,6 +374,15 @@ margin-left: auto;
 flex-direction: column;
 
 gap: 15px;
+}
+
+.task-content {
+flex-direction: column;
+}
+
+.task-image {
+width: 100%;
+height: 250px;
 }
 
 .task-actions {
