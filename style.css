@@ -8,6 +8,7 @@ margin: 0;
 padding: 0;
 }
 
+
 /* ========================================
 BODY
 ======================================== */
@@ -18,35 +19,62 @@ background: #f4f4f4;
 color: #333;
 }
 
+
 /* ========================================
 NAVIGATION
 ======================================== */
 
 nav {
-height: 70px;
+min-height: 150px;
+
 background: #800000;
 color: white;
 
 display: flex;
-align-items: center;
+flex-direction: column;
 
-padding: 0 30px;
+align-items: center;
+justify-content: center;
+
+gap: 12px;
+
+padding: 15px 30px;
 }
+
+
+/* ========================================
+LOGO
+======================================== */
 
 .logo {
-font-size: 22px;
-font-weight: bold;
-margin-right: 50px;
+margin: 0;
 }
+
+.logo img {
+width: 100px;
+height: auto;
+
+display: block;
+}
+
+
+/* ========================================
+NAVIGATION LINKS
+======================================== */
 
 .nav-links {
 display: flex;
+
+justify-content: center;
+
 gap: 30px;
 }
 
 .nav-links a {
 color: white;
+
 text-decoration: none;
+
 font-size: 15px;
 }
 
@@ -54,13 +82,20 @@ font-size: 15px;
 text-decoration: underline;
 }
 
+
+/* ========================================
+ACCOUNT
+======================================== */
+
 .account {
-margin-left: auto;
+margin: 0;
 
 display: flex;
 align-items: center;
 
 gap: 8px;
+
+position: relative;
 }
 
 .account span {
@@ -82,6 +117,50 @@ cursor: pointer;
 opacity: 0.75;
 }
 
+
+/* ========================================
+ACCOUNT MENU
+======================================== */
+
+.account-menu {
+display: none;
+
+position: absolute;
+
+top: 100%;
+
+margin-top: 8px;
+
+background: white;
+
+border-radius: 6px;
+
+box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+
+overflow: hidden;
+
+z-index: 1000;
+}
+
+.account-menu button {
+width: 100%;
+
+padding: 10px 20px;
+
+background: white;
+
+color: #333;
+
+border: none;
+
+cursor: pointer;
+}
+
+.account-menu button:hover {
+background: #f0f0f0;
+}
+
+
 /* ========================================
 MAIN
 ======================================== */
@@ -92,6 +171,7 @@ max-width: 1000px;
 
 margin: 30px auto;
 }
+
 
 /* ========================================
 SECTIONS
@@ -107,19 +187,23 @@ margin-bottom: 20px;
 border-radius: 10px;
 }
 
+
 /* ========================================
 TASK FORM
 ======================================== */
 
 .task-form {
 display: flex;
+
 flex-direction: column;
+
 gap: 12px;
 }
 
 .task-form h2 {
 margin-bottom: 5px;
 }
+
 
 input,
 select,
@@ -132,6 +216,11 @@ border-radius: 6px;
 
 border: 1px solid #ccc;
 }
+
+
+/* ========================================
+TASK FORM BUTTON
+======================================== */
 
 .task-form button {
 background: #800000;
@@ -147,6 +236,7 @@ cursor: pointer;
 opacity: 0.85;
 }
 
+
 /* ========================================
 SEARCH
 ======================================== */
@@ -154,6 +244,7 @@ SEARCH
 .search-section input {
 width: 100%;
 }
+
 
 /* ========================================
 SUMMARY
@@ -177,6 +268,7 @@ font-size: 28px;
 margin-bottom: 5px;
 }
 
+
 /* ========================================
 TASK LIST
 ======================================== */
@@ -185,136 +277,175 @@ TASK LIST
 margin-bottom: 15px;
 }
 
-.task-item {
+
+/* ========================================
+TASK CARD
+======================================== */
+
+.task-card {
 border: 1px solid #ddd;
 
-padding: 18px;
+padding: 20px;
 
-margin-top: 12px;
+margin-top: 15px;
 
-border-radius: 8px;
+border-radius: 10px;
+
+background: white;
+
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
-.task-item.completed {
-opacity: 0.6;
-}
-
-.task-item.completed .task-name {
-text-decoration: line-through;
-}
 
 /* ========================================
-TASK CONTENT
+TASK TITLE
 ======================================== */
 
-.task-content {
-display: flex;
+.task-card h3 {
+font-size: 22px;
 
-justify-content: space-between;
+margin-bottom: 12px;
 
-align-items: flex-start;
-
-gap: 25px;
+color: #333;
 }
+
 
 /* ========================================
-TASK DETAILS
+TASK INFORMATION
 ======================================== */
 
-.task-details {
-flex: 1;
+.task-card p {
+margin-bottom: 7px;
+
+line-height: 1.5;
 }
 
-.task-name {
-font-size: 20px;
-
+.task-card p strong {
 font-weight: bold;
-
-margin-bottom: 10px;
 }
 
-.task-info {
-margin-bottom: 8px;
-
-color: #666;
-}
 
 /* ========================================
 TASK IMAGE
 ======================================== */
 
-.task-image {
+.task-card .clickable-image {
+display: block;
+
 width: 300px;
+
 height: 220px;
 
-flex-shrink: 0;
+margin-top: 15px;
 
 border: 1px solid #ddd;
 
 border-radius: 8px;
 
-overflow: hidden;
-
-display: flex;
-
-align-items: center;
-
-justify-content: center;
+object-fit: cover;
 
 background: #f5f5f5;
+
+cursor: pointer;
+
+transition: opacity 0.2s ease;
 }
 
-.task-image img {
-display: block;
+.task-card .clickable-image:hover {
+opacity: 0.9;
+}
 
+
+/* ========================================
+COMMENT BOX
+======================================== */
+
+.task-card textarea {
 width: 100%;
-height: 100%;
 
-object-fit: cover;
-}
+min-height: 90px;
 
-.no-image {
-color: #999;
+margin-top: 15px;
+
+padding: 12px;
+
+font-family: Arial, sans-serif;
 
 font-size: 14px;
+
+border: 1px solid #ccc;
+
+border-radius: 8px;
+
+resize: vertical;
 }
+
+.task-card textarea:focus {
+outline: none;
+
+border-color: #800000;
+}
+
 
 /* ========================================
 TASK BUTTONS
 ======================================== */
 
-.task-actions {
+.task-buttons {
 display: flex;
 
 gap: 10px;
 
-margin-top: 15px;
+margin-top: 10px;
+
+flex-wrap: wrap;
 }
 
-.complete-button {
+.task-buttons button {
+cursor: pointer;
+
+border: none;
+
+transition: opacity 0.2s ease;
+}
+
+.task-buttons button:hover {
+opacity: 0.85;
+}
+
+
+/* ========================================
+SAVE COMMENT BUTTON
+======================================== */
+
+.task-buttons button:first-child {
+background: #fc6600;
+
+color: white;
+}
+
+
+/* ========================================
+COMPLETE BUTTON
+======================================== */
+
+.task-buttons button:nth-child(2) {
 background: #2e7d32;
 
 color: white;
-
-border: none;
-
-cursor: pointer;
 }
 
-.delete-button {
-background: #c62828;
+
+/* ========================================
+DELETE BUTTON
+======================================== */
+
+.task-buttons button:nth-child(3) {
+background: #800000;
 
 color: white;
-
-border: none;
-
-cursor: pointer;
 }
 
-.complete-button:hover,
-.delete-button:hover {
-opacity: 0.85;
-}
 
 /* ========================================
 PRIORITY
@@ -338,6 +469,88 @@ color: #2e7d32;
 font-weight: bold;
 }
 
+
+/* ========================================
+IMAGE VIEWER
+======================================== */
+
+.image-viewer {
+position: fixed;
+
+top: 0;
+left: 0;
+
+width: 100%;
+height: 100%;
+
+background: rgba(0, 0, 0, 0.85);
+
+display: flex;
+
+align-items: center;
+justify-content: center;
+
+z-index: 9999;
+
+padding: 30px;
+}
+
+.image-viewer-content {
+position: relative;
+
+max-width: 95vw;
+max-height: 95vh;
+
+display: flex;
+
+align-items: center;
+justify-content: center;
+}
+
+.image-viewer-content img {
+max-width: 95vw;
+max-height: 90vh;
+
+width: auto;
+height: auto;
+
+object-fit: contain;
+
+border-radius: 8px;
+}
+
+.close-image-button {
+position: absolute;
+
+top: -45px;
+right: -5px;
+
+width: 40px;
+height: 40px;
+
+padding: 0;
+
+border: none;
+
+border-radius: 50%;
+
+background: white;
+color: #333;
+
+font-size: 28px;
+
+line-height: 40px;
+
+cursor: pointer;
+}
+
+.close-image-button:hover {
+background: #800000;
+
+color: white;
+}
+
+
 /* ========================================
 MOBILE
 ======================================== */
@@ -345,30 +558,46 @@ MOBILE
 @media (max-width: 700px) {
 
 nav {
-height: auto;
+min-height: 150px;
 
-padding: 20px;
-
-flex-wrap: wrap;
-
-gap: 15px;
+padding: 15px 20px;
 }
 
-.logo {
-margin-right: 20px;
+
+/* -------------------------------
+MOBILE LOGO
+------------------------------- */
+
+.logo img {
+width: 70px;
 }
+
+
+/* -------------------------------
+MOBILE NAV LINKS
+------------------------------- */
 
 .nav-links {
-order: 3;
+gap: 20px;
 
-width: 100%;
+flex-wrap: wrap;
 
 justify-content: center;
 }
 
+
+/* -------------------------------
+MOBILE ACCOUNT
+------------------------------- */
+
 .account {
-margin-left: auto;
+margin: 0;
 }
+
+
+/* -------------------------------
+MOBILE SUMMARY
+------------------------------- */
 
 .summary {
 flex-direction: column;
@@ -376,17 +605,254 @@ flex-direction: column;
 gap: 15px;
 }
 
-.task-content {
-flex-direction: column;
-}
 
-.task-image {
+/* -------------------------------
+MOBILE TASK IMAGE
+------------------------------- */
+
+.task-card .clickable-image {
 width: 100%;
+
 height: 250px;
 }
 
-.task-actions {
+
+/* -------------------------------
+MOBILE TASK BUTTONS
+------------------------------- */
+
+.task-buttons {
 flex-direction: column;
 }
 
+.task-buttons button {
+width: 100%;
+}
+
+}
+
+
+/* ========================================
+LOGIN PAGE
+======================================== */
+
+.login-page {
+min-height: 100vh;
+
+display: flex;
+
+align-items: center;
+
+justify-content: center;
+
+padding: 20px;
+}
+
+
+/* ========================================
+LOGIN BOX
+======================================== */
+
+.login-box {
+width: 100%;
+
+max-width: 420px;
+
+background: white;
+
+padding: 40px;
+
+border-radius: 12px;
+
+box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+
+text-align: center;
+}
+
+
+/* ========================================
+LOGIN LOGO
+======================================== */
+
+.login-logo img {
+width: 100px;
+
+height: auto;
+
+display: block;
+
+margin: 0 auto 20px;
+}
+
+
+/* ========================================
+LOGIN TITLE
+======================================== */
+
+.login-box h1 {
+margin-bottom: 8px;
+
+font-size: 28px;
+}
+
+.login-subtitle {
+color: #777;
+
+margin-bottom: 30px;
+}
+
+
+/* ========================================
+LOGIN FORM
+======================================== */
+
+#loginForm {
+display: flex;
+
+flex-direction: column;
+
+gap: 10px;
+
+text-align: left;
+}
+
+#loginForm label {
+font-weight: bold;
+
+margin-top: 5px;
+}
+
+#loginForm input {
+width: 100%;
+
+padding: 12px;
+
+font-size: 16px;
+
+border: 1px solid #ccc;
+
+border-radius: 6px;
+}
+
+
+/* ========================================
+LOGIN BUTTON
+======================================== */
+
+.login-button {
+width: 100%;
+
+margin-top: 15px;
+
+padding: 12px;
+
+background: #800000;
+
+color: white;
+
+border: none;
+
+border-radius: 6px;
+
+font-size: 16px;
+
+cursor: pointer;
+}
+
+.login-button:hover {
+opacity: 0.85;
+}
+
+
+/* ========================================
+LOGIN MESSAGE
+======================================== */
+
+.login-message {
+margin-top: 15px;
+
+color: #800000;
+}
+
+
+/* ========================================
+USER MANAGEMENT
+======================================== */
+
+.user-management {
+margin-top: 30px;
+}
+
+
+.user-management-description {
+color: #666;
+margin-bottom: 20px;
+}
+
+
+.create-user {
+padding: 20px;
+border: 1px solid #ddd;
+border-radius: 10px;
+margin-bottom: 30px;
+}
+
+
+.create-user h3,
+.users-list h3 {
+margin-top: 0;
+}
+
+
+.create-user input,
+.create-user select {
+width: 100%;
+box-sizing: border-box;
+margin-bottom: 12px;
+}
+
+
+.create-user button {
+width: 100%;
+margin-top: 5px;
+}
+
+
+.user-message {
+min-height: 20px;
+margin-bottom: 0;
+font-weight: 600;
+}
+
+
+.users-list {
+padding: 20px;
+border: 1px solid #ddd;
+border-radius: 10px;
+}
+
+
+.user-row {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 14px 0;
+border-bottom: 1px solid #eee;
+}
+
+
+.user-row:last-child {
+border-bottom: none;
+}
+
+
+.user-name {
+font-weight: 600;
+}
+
+
+.user-role {
+font-size: 14px;
+color: #666;
+text-transform: capitalize;
 }

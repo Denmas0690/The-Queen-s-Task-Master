@@ -2,49 +2,115 @@
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+>
 
 <title>Task Master</title>
 
-<link rel="stylesheet" href="style.css">
+<link
+rel="stylesheet"
+href="style.css"
+>
+
 </head>
 
+
 <body>
+
+
+<!-- ======================================== -->
+<!-- NAVIGATION -->
+<!-- ======================================== -->
 
 <nav>
 
 <div class="logo">
-Task Master
+
+<a href="index.html">
+
+<img
+src="The Queen's (general).png"
+alt="Task Master"
+>
+
+</a>
+
 </div>
+
 
 <div class="nav-links">
 
-<a href="#">Dashboard</a>
-<a href="#">Tasks</a>
-<a href="#">Reports</a>
+<a href="#">
+Dashboard
+</a>
+
+<a href="#">
+Tasks
+</a>
+
+<a href="#">
+Reports
+</a>
 
 </div>
 
+
 <div class="account">
+
+<button
+type="button"
+id="accountButton"
+>
 
 <span>👤</span>
 
-<button id="accountButton">
-Denny ▾
+<span id="usernameDisplay">
+User
+</span>
+
+▾
+
 </button>
+
+
+<div
+id="accountMenu"
+class="account-menu"
+>
+
+<button
+type="button"
+id="logoutButton"
+>
+Logout
+</button>
+
+</div>
 
 </div>
 
 </nav>
 
+
+
 <main>
 
-<!-- Task Form -->
+
+<!-- ======================================== -->
+<!-- ADD TASK -->
+<!-- ======================================== -->
 
 <section class="task-form">
 
-<h2>Add New Task</h2>
+<h2>
+Add New Task
+</h2>
+
 
 <input
 type="text"
@@ -52,24 +118,39 @@ id="taskInput"
 placeholder="Enter task..."
 >
 
+
 <input
 type="text"
 id="assignedInput"
 placeholder="Assigned to..."
 >
 
+
 <select id="priorityInput">
 
-<option value="Low">Low</option>
-<option value="Medium" selected>Medium</option>
-<option value="High">High</option>
+<option value="Low">
+Low
+</option>
+
+<option
+value="Medium"
+selected
+>
+Medium
+</option>
+
+<option value="High">
+High
+</option>
 
 </select>
+
 
 <input
 type="date"
 id="dueDateInput"
 >
+
 
 <input
 type="file"
@@ -77,13 +158,21 @@ id="imageInput"
 accept="image/*"
 >
 
-<button id="addTaskButton">
+
+<button
+type="button"
+id="addTaskButton"
+>
 Add Task
 </button>
 
 </section>
 
-<!-- Search -->
+
+
+<!-- ======================================== -->
+<!-- SEARCH -->
+<!-- ======================================== -->
 
 <section class="search-section">
 
@@ -95,38 +184,172 @@ placeholder="Search tasks..."
 
 </section>
 
-<!-- Task Summary -->
+
+
+<!-- ======================================== -->
+<!-- SUMMARY -->
+<!-- ======================================== -->
 
 <section class="summary">
 
 <div>
-<h3 id="totalTasks">0</h3>
-<p>Total</p>
+
+<h3 id="totalTasks">
+0
+</h3>
+
+<p>
+Total
+</p>
+
 </div>
 
-<div>
-<h3 id="pendingTasks">0</h3>
-<p>Pending</p>
-</div>
 
 <div>
-<h3 id="completedTasks">0</h3>
-<p>Completed</p>
+
+<h3 id="pendingTasks">
+0
+</h3>
+
+<p>
+Pending
+</p>
+
+</div>
+
+
+<div>
+
+<h3 id="completedTasks">
+0
+</h3>
+
+<p>
+Approved
+</p>
+
 </div>
 
 </section>
 
-<!-- Task List -->
+
+
+<!-- ======================================== -->
+<!-- TASK LIST -->
+<!-- ======================================== -->
 
 <section class="task-list">
 
-<h2>Tasks</h2>
+<h2>
+Tasks
+</h2>
+
 
 <div id="taskContainer"></div>
 
 </section>
 
+
+
+<!-- ======================================== -->
+<!-- USER MANAGEMENT -->
+<!-- ADMIN ONLY -->
+<!-- ======================================== -->
+
+<section
+id="userManagementSection"
+class="user-management"
+style="display: none;"
+>
+
+<h2>
+User Management
+</h2>
+
+
+<p class="user-management-description">
+
+Create and manage Task Master users.
+
+</p>
+
+
+
+<!-- ======================================== -->
+<!-- CREATE USER -->
+<!-- ======================================== -->
+
+<div class="create-user">
+
+<h3>
+Create New User
+</h3>
+
+
+<input
+type="text"
+id="userUsernameInput"
+placeholder="Username"
+>
+
+
+<input
+type="password"
+id="userPasswordInput"
+placeholder="Password"
+>
+
+
+<select id="userRoleInput">
+
+<option value="employee">
+Employee
+</option>
+
+<option value="admin">
+Admin
+</option>
+
+</select>
+
+
+<button
+type="button"
+id="createUserButton"
+>
+Create User
+</button>
+
+
+<p
+id="userMessage"
+class="user-message"
+></p>
+
+</div>
+
+
+
+<!-- ======================================== -->
+<!-- USER LIST -->
+<!-- ======================================== -->
+
+<div class="users-list">
+
+<h3>
+Existing Users
+</h3>
+
+
+<div id="usersContainer"></div>
+
+</div>
+
+</section>
+
+
 </main>
+
 
 <script src="script.js"></script>
 

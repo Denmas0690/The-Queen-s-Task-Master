@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+>
+
+<title>Task Master - Login</title>
+
+<link
+rel="stylesheet"
+href="style.css"
+>
+
+</head>
+
+
+<body>
+
+
+<main class="login-page">
+
+
+<section class="login-box">
+
+
+<!-- ========================================
+LOGO
+======================================== -->
+
+<div class="login-logo">
+
+<img
+src="The Queen's (general).png"
+alt="Queen's Logo"
+>
+
+</div>
+
+
+<!-- ========================================
+TITLE
+======================================== -->
+
+<h1>
+Task Master
+</h1>
+
+
+<p class="login-subtitle">
+Sign in to your account
+</p>
+
+
+<!-- ========================================
+LOGIN FORM
+======================================== -->
+
+<form id="loginForm">
+
+
+<label for="username">
+Username
+</label>
+
+
+<input
+type="text"
+id="username"
+placeholder="Enter your username"
+required
+>
+
+
+<label for="password">
+Password
+</label>
+
+
+<input
+type="password"
+id="password"
+placeholder="Enter your password"
+required
+>
+
+
+<button
+type="submit"
+class="login-button"
+>
+
+Login
+
+</button>
+
+
+</form>
+
+
+<!-- ========================================
+LOGIN MESSAGE
+======================================== -->
+
+<p
+class="login-message"
+id="loginMessage"
+></p>
+
+
+</section>
+
+
+</main>
+
+
+<script>
+
+
+console.log(
+"Login page is connected!"
+);
+
+
+// ========================================
+// LOGIN ELEMENTS
+// ========================================
+
+const loginForm =
+document.querySelector("#loginForm");
+
+
+const usernameInput =
+document.querySelector("#username");
+
+
+const passwordInput =
+document.querySelector("#password");
+
+
+const loginMessage =
+document.querySelector("#loginMessage");
+
+
+// ========================================
+// LOGIN
+// ========================================
+
+loginForm.addEventListener(
+"submit",
+function(event) {
+
+event.preventDefault();
+
+
+const username =
+usernameInput.value.trim();
+
+
+const password =
+passwordInput.value;
+
+
+// ========================================
+// SEND LOGIN TO SERVER
+// ========================================
+
+fetch(
+"/login",
+{
+
+method:
+"POST",
+
+headers:
+{
+"Content-Type":
+"application/json"
+},
+
+credentials:
+"include",
+
+body:
+JSON.stringify({
+
+username:
+username,
+
+password:
+password
+
+})
+
+}
+)
+
+
+// ========================================
+// SERVER RESPONSE
+// ========================================
+
+.then(
+function(response) {
+
+return response.json()
+
+.then(
+function(data) {
+
+return {
+
+ok:
+response.ok,
+
+data:
+data
+
+};
+
+}
+);
+
+}
+)
+
+
+// ========================================
+// LOGIN RESULT
+// ========================================
+
+.then(
+function(result) {
+
+if (!result.ok) {
+
+loginMessage.textContent =
+result.data.message;
+
+return;
+
+}
+
+
+console.log(
+"Login successful:",
+result.data
+);
+
+
+// ========================================
+// SAVE USER DISPLAY INFORMATION
+// ========================================
+
+localStorage.setItem(
+"username",
+result.data.user.username
+);
+
+
+localStorage.setItem(
+"role",
+result.data.user.role
+);
+
+
+// ========================================
+// GO TO DASHBOARD
+// ========================================
+
+window.location.href =
+"index.html";
+
+}
+)
+
+
+// ========================================
+// CONNECTION ERROR
+// ========================================
+
+.catch(
+function(error) {
+
+console.error(
+"Login error:",
+error
+);
+
+
+loginMessage.textContent =
+"Unable to connect to the server.";
+
+}
+);
+
+});
+
+
+</script>
+
+
+</body>
+
+</html>

@@ -1,6 +1,6 @@
 # Task Master
 
-A modern task management web application designed to help teams organize, assign, and manage their work efficiently.
+A modern task management web application made for the Queen's company, designed to help teams organize, assign, and manage their work efficiently.
 
 Task Master is a personal development project focused on building a practical web application while developing my skills in front-end and full-stack web development.
 
@@ -86,3 +86,10 @@ Task Master/
 ├── style.css
 ├── script.js
 └── README.md
+
+---
+
+## 👨‍💻 Author
+
+**Denny Berlin**
+Front-End Developer / Web Development
