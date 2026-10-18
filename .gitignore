@@ -1,0 +1,17 @@
+# Private environment variables
+.env
+.env.*
+!.env.example
+
+# Dependencies
+node_modules/
+
+# Uploaded files
+uploads/
+
+# Local database backups and exports
+task_master_backup.dump
+task_master_data.sql
+
+# Temporary database import script
+import-data.js
