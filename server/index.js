@@ -5,6 +5,8 @@ const session = require("express-session");
 const multer = require("multer");
 const pool = require("./db");
 
+const pgSession = require("connect-pg-simple")(session);
+
 const app = express();
 
 
@@ -73,34 +75,33 @@ fileSize: 20 * 1024 * 1024
 // SESSION
 // ======================================================
 
-app.use(
-
-session({
-
-secret:
-"task-master-secret-change-this-later",
-
-resave:
-false,
-
-saveUninitialized:
-false,
-
-cookie: {
-
-httpOnly:
-true,
-
-secure:
-false,
-
-maxAge:
-1000 * 60 * 60 * 8
-
+if (!process.env.SESSION_SECRET) {
+throw new Error("SESSION_SECRET is missing from environment variables.");
 }
 
-})
+app.use(
+session({
+store: new pgSession({
+  pool: pool,
+  tableName: "user_sessions",
+  createTableIfMissing: true,
+  errorLog: (error) => {
+    console.error("SESSION STORE ERROR:", error);
+  }
+}),
 
+secret: process.env.SESSION_SECRET,
+
+resave: false,
+saveUninitialized: false,
+
+cookie: {
+httpOnly: true,
+secure: process.env.NODE_ENV === "production",
+sameSite: "lax",
+maxAge: 1000 * 60 * 60 * 8
+}
+})
 );
 
 
@@ -333,6 +334,18 @@ role:
 user.role
 
 };
+
+await new Promise((resolve, reject) => {
+  req.session.save((error) => {
+    if (error) {
+      console.error("SESSION SAVE FAILED:", error);
+      reject(error);
+    } else {
+      console.log("SESSION SAVED TO STORE");
+      resolve();
+    }
+  });
+});
 
 
 console.log(
