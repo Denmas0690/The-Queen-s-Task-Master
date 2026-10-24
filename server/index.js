@@ -9,6 +9,10 @@ const pgSession = require("connect-pg-simple")(session);
 
 const app = express();
 
+if (process.env.NODE_ENV === "production") {
+app.set("trust proxy", 1);
+}
+
 
 // ======================================================
 // JSON BODY SIZE
@@ -82,12 +86,12 @@ throw new Error("SESSION_SECRET is missing from environment variables.");
 app.use(
 session({
 store: new pgSession({
-  pool: pool,
-  tableName: "user_sessions",
-  createTableIfMissing: true,
-  errorLog: (error) => {
-    console.error("SESSION STORE ERROR:", error);
-  }
+pool: pool,
+tableName: "user_sessions",
+createTableIfMissing: true,
+errorLog: (error) => {
+console.error("SESSION STORE ERROR:", error);
+}
 }),
 
 secret: process.env.SESSION_SECRET,
@@ -336,15 +340,15 @@ user.role
 };
 
 await new Promise((resolve, reject) => {
-  req.session.save((error) => {
-    if (error) {
-      console.error("SESSION SAVE FAILED:", error);
-      reject(error);
-    } else {
-      console.log("SESSION SAVED TO STORE");
-      resolve();
-    }
-  });
+req.session.save((error) => {
+if (error) {
+console.error("SESSION SAVE FAILED:", error);
+reject(error);
+} else {
+console.log("SESSION SAVED TO STORE");
+resolve();
+}
+});
 });
 
 
